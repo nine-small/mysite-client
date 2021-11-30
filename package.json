@@ -5,11 +5,32 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:HeadPortrait": "vue serve ./src/components/HeadPortrait/test.vue",
+    "test:Icon": "vue serve ./src/components/Icon/test.vue",
+    "test:Pager": "vue serve ./src/components/Pager/test.vue",
+    "test:Empty": "vue serve ./src/components/Empty/test.vue",
+    "test:ImageLoader": "vue serve ./src/components/ImageLoader/test.vue",
+    "test:Contact": "vue serve ./src/components/SiteAside/Contact/test.vue",
+    "test:One": "vue serve ./src/components/SiteAside/Contact/One/test.vue",
+    "test:Menu": "vue serve ./src/components/SiteAside/Menu/test.vue",
+    "test:SiteAside": "vue serve ./src/components/SiteAside/test.vue",
+    "test:Layout": "vue serve ./src/components/Layout/test.vue",
+    "test:Rotation": "vue serve ./src/views/Home/Rotation/test.vue",
+    "test:Loading": "vue serve ./src/components/Loading/test.vue"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "highlight": "^0.2.4",
+    "highlight.js": "^11.3.1",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -18,7 +39,10 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "less": "^3.9.0",
+    "less-loader": "^4.0.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "eslintConfig": {
     "root": true,

@@ -1,0 +1,57 @@
+@import "~@/styles/var.less";
+.contact-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left:35px;
+    li {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      list-style: none;
+      margin: 14px 0;
+      position: relative;
+      .image {
+        position: absolute;
+        left: 0;
+        bottom: 35px;
+        width: 140px;
+        height: 140px;
+        padding: 10px 20px;
+        background-color: #fff;
+        transform: scaleY(0);
+        transform-origin: left bottom;
+        transition: all 500ms;
+        img {
+          width: 100%;
+          height: 100%;
+          // box-sizing: border-box;
+          // border: 1px solid #ccc;
+          display: block;
+        }
+        &:after {
+          content: "";
+          border: 8px solid transparent;
+          border-top-color: #fff;
+          position: absolute;
+          left: 50%;
+          bottom: -16px;
+        }
+      }
+      &:hover a {
+        color: @primary;
+      }
+      &:hover .image {
+        transform: scaleY(1);
+      }
+      a {
+        text-decoration: none;
+        color: @gray;
+        display: flex;
+        justify-content: start;
+        .iconfont {
+          width: 36px;
+          height: 30px;
+        }
+      }
+    }
+  }
