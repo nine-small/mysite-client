@@ -7,12 +7,10 @@
             <RouterLink
               :to="{
                 name: 'Article',
-                params: {
-                  id: data.id,
-                },
+                params: { id: data.id },
               }"
             >
-              <img v-lazy="data.thumb" :title="data.title" />
+              <img v-lazy="serviceUrl + data.thumb" />
             </RouterLink>
           </div>
         </template>
@@ -21,9 +19,7 @@
           <RouterLink
             :to="{
               name: 'Article',
-              params: {
-                id: data.id,
-              },
+              params: { id: data.id },
             }"
           >
             <h2 class="title">{{ data.title }}</h2>
@@ -46,9 +42,15 @@
 <script>
 import Layout from "@/components/Layout";
 import getTime from "@/utils/getTime";
+import serviceUrl from "@/serviceUrl";
 export default {
   name: "BlogListItem",
   props: ["data"],
+  data() {
+    return {
+      serviceUrl,
+    };
+  },
   components: {
     Layout,
   },
@@ -86,12 +88,13 @@ export default {
       width: 200px;
       padding-right: 20px;
       a {
-        display: flex;
+        display: block;
         width: 100%;
         height: 100%;
         align-items: center;
         img {
-          width: 200px;
+          height: 200px;
+          width: 100%;
         }
       }
     }
@@ -110,8 +113,8 @@ export default {
         color: #888;
         span.item {
           margin-right: 20px;
-          &.handle{
-            &:hover{
+          &.handle {
+            &:hover {
               color: @primary;
             }
             cursor: pointer;

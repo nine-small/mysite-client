@@ -29,7 +29,6 @@ export default {
     Layout,
     BlogCategory,
   },
-
 };
 </script>
 
@@ -41,12 +40,6 @@ export default {
   .blog-container-main {
     width: 100%;
     height: 100%;
-    .blog-container-main-pager {
-      padding: 20px 0;
-      height: 25px;
-      width: 100%;
-      background-color: #fff;
-    }
   }
   .right {
     position: relative;

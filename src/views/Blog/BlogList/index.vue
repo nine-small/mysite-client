@@ -1,13 +1,13 @@
 <template>
   <div class="app-container" ref="mainContainer">
+
     <ul class="blog-list" v-if="data.length">
       <li v-for="item in data" :key="item.id" class="blog-item">
         <BlogListItem :data="item" />
       </li>
     </ul>
-
-    <div class="pager">
-      <!-- 属性:current/limit/total 事件:changePage-->
+    <!-- 属性:current/limit/total 事件:changePage-->
+    <div class="page">
       <Pager
         v-if="data"
         :current="page"
@@ -16,6 +16,7 @@
         @changePage="changePage"
       />
     </div>
+
   </div>
 </template>
 
@@ -26,22 +27,23 @@ import BlogListItem from "@/views/Blog/BlogList/BlogListItem";
 import Pager from "@/components/Pager";
 // 分页获取博客简要
 import { getBlogs } from "@/api/blog.js";
-// 
-import { mapState,mapMutations } from 'vuex';
+//
+import { mapState, mapMutations } from "vuex";
+import mainScroll from "@/mixins/mainScroll";
 export default {
+   mixins: [mainScroll("mainContainer")],
   components: {
     BlogListItem,
     Pager,
   },
   data() {
     return {
-      // isLoading: false,
       data: [],
       total: 0,
     };
   },
   computed: {
-    ...mapState('setting',['loading']),
+    ...mapState("setting", ["loading"]),
     page() {
       return +this.$route.query.page || 1;
     },
@@ -50,7 +52,7 @@ export default {
     },
     categoryId() {
       return this.$route.params.categoryId || -1;
-    }
+    },
   },
   watch: {
     async $route() {
@@ -67,17 +69,16 @@ export default {
     this.eventBus.$off("scrollTop", this.scrollTop);
   },
   methods: {
-    ...mapMutations('setting',['setLoading']),
+    ...mapMutations("setting", ["setLoading"]),
     scrollTop(num) {
       this.$refs.mainContainer.scrollTop = num;
     },
     async fetchData() {
-      this.setLoading(true)
+      this.setLoading(true);
       const resp = await getBlogs(this.page, this.limit, this.categoryId);
       this.total = resp.total;
       this.data = resp.rows;
-      this.setLoading(false)
- 
+      this.setLoading(false);
     },
     changePage(current) {
       const query = {
@@ -93,7 +94,7 @@ export default {
         params,
       });
     },
-  }
+  },
 };
 </script>
 
@@ -105,9 +106,7 @@ export default {
   padding: 20px;
   padding-top: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
+  overflow: hidden auto;
   scroll-behavior: smooth;
 }
 ul.blog-list {
@@ -120,13 +119,8 @@ ul.blog-list {
     }
   }
 }
-
-.pager {
+.page{
   height: 50px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: #fff;
+  line-height: 50px;
 }
 </style>

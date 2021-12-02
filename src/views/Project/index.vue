@@ -1,15 +1,11 @@
 <template>
-  <ul
-    class="project-container"
-    v-loading="loading"
-    ref="mainContainer"
-  >
+  <ul class="project-container" v-loading="loading" ref="mainContainer">
     <li v-for="item in data" :key="item.id">
       <Layout>
         <template #left>
           <div class="left">
             <a :href="item.rul">
-              <img v-lazy="item.thumb" />
+              <img v-lazy="serviceUrl + item.thumb" />
             </a>
           </div>
         </template>
@@ -30,28 +26,34 @@
 import Layout from "@/components/Layout";
 import { mapState } from "vuex";
 import mainScroll from "@/mixins/mainScroll";
+import serviceUrl from "@/serviceUrl";
 export default {
-  mixins: [mainScroll('mainContainer')],
+  mixins: [mainScroll("mainContainer")],
+  data() {
+    return {
+      serviceUrl,
+    };
+  },
   components: {
     Layout,
   },
   computed: {
     ...mapState("project", ["data", "loading"]),
   },
-  methods:{
-    scrollTop(num){
+  methods: {
+    scrollTop(num) {
       this.$refs.mainContainer.scrollTop = num;
-    }
+    },
   },
   created() {
     this.$store.dispatch("project/getProjects");
   },
-  mounted(){
-    this.eventBus.$on('scrollTop',this.scrollTop)
+  mounted() {
+    this.eventBus.$on("scrollTop", this.scrollTop);
   },
-  destroyed(){
-    this.eventBus.$off('scrollTop',this.scrollTop)
-  }
+  destroyed() {
+    this.eventBus.$off("scrollTop", this.scrollTop);
+  },
 };
 </script>
 
