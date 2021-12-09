@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
-    <Avatar :url="serviceUrl+data.avatar" v-if="data" />
+    <!-- <Avatar :url="serviceUrl+data.avatar" v-if="data" /> -->
+    <Avatar :url="data.avatar" v-if="data" />
     <h1 class="head" v-if="data">{{ data.siteTitle }}</h1>
     <Menu />
     <Contact :data="data" v-if="data" />

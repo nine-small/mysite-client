@@ -10,7 +10,8 @@
                 params: { id: data.id },
               }"
             >
-              <img v-lazy="serviceUrl + data.thumb" />
+              <!-- <img v-lazy="serviceUrl + data.thumb" /> -->
+              <img v-lazy="data.thumb" />
             </RouterLink>
           </div>
         </template>

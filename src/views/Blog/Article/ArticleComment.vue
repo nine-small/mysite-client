@@ -62,8 +62,9 @@ export default {
     },
     async postComment(data,container){
       data.blogId = this.blogId
-      const resp = await postComment(data)
-      console.log(resp)
+      // const resp = await postComment(data)
+      postComment
+      const resp = {}
       if(typeof resp === 'object'){
         await this.fetchData();
         showMessage({container,text:'提交成功'})

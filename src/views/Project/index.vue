@@ -5,7 +5,8 @@
         <template #left>
           <div class="left">
             <a :href="item.rul">
-              <img v-lazy="serviceUrl + item.thumb" />
+              <!-- <img v-lazy="serviceUrl + item.thumb" /> -->
+              <img v-lazy="item.thumb" />
             </a>
           </div>
         </template>

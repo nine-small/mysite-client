@@ -3,7 +3,8 @@
     <Layout>
       <template #left>
         <div class="header">
-          <img :src="serviceUrl + data.avatar" />
+          <!-- <img :src="serviceUrl + data.avatar" /> -->
+          <img :src="data.avatar" />
         </div>
       </template>
       <div class="main">

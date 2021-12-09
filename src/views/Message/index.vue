@@ -71,7 +71,9 @@ export default {
         this.setLoading(false);
     },
     async handleSubmit(data, container) {
-      const resp = await postMessage(data);
+      // const resp = await postMessage(data);
+      postMessage
+      const resp = {}
       if (typeof resp === "object") {
         showMessage({ container });
         this.page = 1;
