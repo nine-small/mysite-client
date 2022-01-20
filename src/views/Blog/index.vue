@@ -17,7 +17,7 @@
 
 <script>
 // 博客分类详情
-import BlogList from "./BlogList";
+import BlogList from "./BlogList/BlogList.vue";
 // 博客分类导航
 import BlogCategory from "./BlogCategory";
 // 布局组件

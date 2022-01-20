@@ -17,7 +17,7 @@
 
     <li>
       <div class="image">
-        <img :src="serviceUrl+data.qqQrCode" alt="QQ" />
+        <img :src="data.qqQrCode" alt="QQ" />
       </div>
       <a>
         <Icon type="qq" />
@@ -27,7 +27,7 @@
 
     <li>
       <div class="image">
-        <img :src="serviceUrl+data.weixinQrCode" alt="微信" />
+        <img :src="data.weixinQrCode" alt="微信" />
       </div>
       <a>
         <Icon type="weixin" />

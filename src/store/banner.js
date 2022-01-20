@@ -1,7 +1,7 @@
 import {
     getBanners
 } from '@/api/banner'
-import serviceUrl from '@/serviceUrl'
+// import serviceUrl from '@/serviceUrl'
 export default {
     state: {
         loading: false,
@@ -22,11 +22,11 @@ export default {
             }
             commit('setLoading', true)
             const resp = await getBanners()
-            const len = resp.length;
-            for(let i = 0 ; i < len ; i ++){
-                resp[i].bigImg = serviceUrl + resp[i].bigImg;
-                resp[i].midImg = serviceUrl + resp[i].midImg;
-            }
+            // const len = resp.length;
+            // for(let i = 0 ; i < len ; i ++){
+            //     resp[i].bigImg = serviceUrl + resp[i].bigImg;
+            //     resp[i].midImg = serviceUrl + resp[i].midImg;
+            // }
             commit('setData', resp)
             commit('setLoading', false)
         }

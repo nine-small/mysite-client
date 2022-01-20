@@ -3,8 +3,9 @@
 </template>
 
 <script>
+// 传过来类型和尺寸。尺寸的默认值为150px
 export default {
-  name: "HeadPortrait",
+  name: "Avatar",
   props: {
     url: {
       type: String,
@@ -21,7 +22,5 @@ export default {
   .avatar_container{
     border-radius: 50%;
     display: block;
-    color:inherit;
-    font-size: inherit;
   }
 </style>

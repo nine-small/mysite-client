@@ -13,14 +13,14 @@ export default {
         }
     },
     actions:{   
-        async getSetting(ctx){
-            if(ctx.state.data){
+        async getSetting({state,commit}){
+            if(state.data){
                 return 
             }
-            ctx.commit('setLoading',true)
+            commit('setLoading',true)
             const resp = await getSetting()
-            ctx.commit('setData',resp)
-            ctx.commit('setLoading',false)
+            commit('setData',resp)
+            commit('setLoading',false)
         }
     },
     namespaced:true

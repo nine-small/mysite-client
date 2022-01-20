@@ -2,6 +2,7 @@
   <div class="app-container">
     <div class="blog-block">
       <Layout>
+        <!-- avatar -->
         <template #left>
           <div class="left">
             <RouterLink
@@ -12,12 +13,13 @@
                 },
               }"
             >
-              <img v-lazy="data.thumb" :title="data.title" />
+              <img :src="data.thumb" :title="data.title" />
             </RouterLink>
           </div>
         </template>
 
         <div class="main">
+          <!-- 点击标题跳转到文章详情 -->
           <RouterLink
             :to="{
               name: 'Article',
@@ -96,9 +98,10 @@ export default {
       }
     }
     .main {
+      display: flex;
+      flex-direction: column;
       h2 {
         cursor: pointer;
-        margin: 0;
         line-height: 40px;
         &:hover {
           color: @primary;

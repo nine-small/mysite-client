@@ -124,9 +124,6 @@ ul.blog-list {
 .pager {
   height: 50px;
   width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
   background-color: #fff;
 }
 </style>

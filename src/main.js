@@ -1,4 +1,4 @@
-// import './mock'
+import './mock'
 import App from './App.vue'
 import vLoading from './directives/loading'
 import vFocus from './directives/focus'

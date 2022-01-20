@@ -1,18 +1,20 @@
 import Mock from "mockjs";
-
+import qqImg from '../../public/image/qq.png';
+import weixin from '../../public/image/weixin.png';
+import avatar from '../../public/image/avatar.jpeg'
 
 Mock.mock('/api/setting', 'get', function () {
     return {
         code: 0,
-        msg: "",
+        msg: "数据获取成功",
         data: {
-            avatar: "https://img2.baidu.com/it/u=4287382951,1120228465&fm=26&fmt=auto",
+            avatar,
             siteTitle: "我的个人空间",
             github: "https://github.com/smallnine345",
             qq: "1203160473",
-            qqQrCode: 'https://img1.baidu.com/it/u=1562963093,2774769360&fm=253&fmt=auto&app=120&f=JPEG?w=430&h=430',
+            qqQrCode: qqImg,
             weixin: "19112085274",
-            weixinQrCode: 'https://img1.baidu.com/it/u=1562963093,2774769360&fm=253&fmt=auto&app=120&f=JPEG?w=430&h=430',
+            weixinQrCode: weixin,
             mail: "1203160473@qq.com",
             icp: "渝ICP备17001719号",
             githubName: "smallnine345",

@@ -21,6 +21,8 @@ const classMap = {
   arrowDown: "icon-down",
   empty: "icon-empty_fill",
   chat: "icon-chat",
+  asideOn:"icon-list_on",
+  asideOff:"icon-list_off"
 };
 export const types = Object.keys(classMap);
 export default {
@@ -41,7 +43,7 @@ export default {
 
 <style scoped>
 /* iconfont在线资源 */
-@import url("//at.alicdn.com/t/font_2872752_4gh7v396ing.css");
+@import url("//at.alicdn.com/t/font_2872752_2rb5fl9mfc9.css");
 .iconfont{
   color:inherit;
   font-size: inherit;
