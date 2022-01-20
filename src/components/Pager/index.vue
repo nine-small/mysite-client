@@ -1,11 +1,14 @@
 <template>
   <div class="pager-container">
+    <!-- 点击跳转到第一页 -->
     <a :class="{ disabled: current === 1 }" @click="handleClick(1)"
       >|&lt;&lt;</a
     >
+    <!-- 点击跳转到上一页 -->
     <a :class="{ disabled: current === 1 }" @click="handleClick(current - 1)"
       >&lt;&lt;</a
     >
+    <!-- 点击调转到对应的页码 -->
     <a
       v-for="(n, i) in showPage"
       :key="i"
@@ -13,12 +16,13 @@
       @click="handleClick(n)"
       >{{ n }}</a
     >
-
+    <!-- 跳转到下一页 -->
     <a
       :class="{ disabled: current === allPage }"
       @click="handleClick(current + 1)"
       >&gt;&gt;</a
     >
+    <!-- 跳转到最后一页 -->
     <a :class="{ disabled: current === allPage }" @click="handleClick(allPage)"
       >&gt;&gt;|</a
     >
@@ -35,7 +39,7 @@ export default {
     // total 总数据条数
     total: {
       type: Number,
-      default: 100,
+      // default: 100,
     },
     // limit 页容量
     limit: {
@@ -83,24 +87,5 @@ export default {
 
 <style scoped lang='less'>
 @import url("../../styles/var.less");
-.pager-container {
-  display: flex;
-  justify-content: center;
-  a {
-    display: block;
-    padding: 0 5px;
-    cursor: pointer;
-    color: @primary;
-    &.disabled {
-      color: @gray;
-      &:hover {
-        cursor: no-drop;
-      }
-    }
-    &.active {
-      color: @words;
-      font-weight: 700;
-    }
-  }
-}
-</style>>
+@import url('./Pager.less');
+</style>

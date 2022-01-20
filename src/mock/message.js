@@ -2,6 +2,14 @@ import Mock from 'mockjs'
 import {
     pathArr
 } from './utils'
+import a1 from '../../public/image/a1.webp'
+import a2 from '../../public/image/a2.webp'
+import a3 from '../../public/image/a3.webp'
+import a4 from '../../public/image/a4.webp'
+import a5 from '../../public/image/a5.webp'
+import a6 from '../../public/image/a6.webp'
+
+
 
 Mock.mock(/\/api\/message.+/, 'get', function (options) {
     const {
@@ -17,7 +25,7 @@ Mock.mock(/\/api\/message.+/, 'get', function (options) {
             'nickname': "@cname",
             'content': "@cparagraph",
             'createDate': "@date(T)",
-            'avatar|1': ['https://img2.baidu.com/it/u=2147069683,694165929&fm=26&fmt=auto', 'https://img2.baidu.com/it/u=2510623592,4240060577&fm=26&fmt=auto', 'https://img2.baidu.com/it/u=3578628057,4277027626&fm=26&fmt=auto', 'https://img0.baidu.com/it/u=202515423,1882536880&fm=26&fmt=auto'],
+            'avatar|1': [a1,a2,a3,a4,a5,a6],
         }]
     }
     data

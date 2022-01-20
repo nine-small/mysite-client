@@ -5,7 +5,6 @@
         <BlogListItem :data="item" />
       </li>
     </ul>
-
     <div class="pager">
       <!-- 属性:current/limit/total 事件:changePage-->
       <Pager
@@ -24,24 +23,23 @@
 import BlogListItem from "@/views/Blog/BlogList/BlogListItem";
 // 翻页组件
 import Pager from "@/components/Pager";
-// 分页获取博客简要
-import { getBlogs } from "@/api/blog.js";
-// 
-import { mapState,mapMutations } from 'vuex';
+import { mapState, mapMutations } from "vuex";
+// 混合
+import mainScroll from '@/mixins/mainScroll.js'
 export default {
+  mixins:[mainScroll('mainContainer')],
   components: {
     BlogListItem,
     Pager,
   },
   data() {
     return {
-      // isLoading: false,
       data: [],
       total: 0,
     };
   },
   computed: {
-    ...mapState('setting',['loading']),
+    ...mapState("setting", ["loading"]),
     page() {
       return +this.$route.query.page || 1;
     },
@@ -50,15 +48,16 @@ export default {
     },
     categoryId() {
       return this.$route.params.categoryId || -1;
-    }
+    },
   },
   watch: {
     async $route() {
-      await this.fetchData();
+      await this._fetchData();
+      this.eventBus.$emit('scrollTop',0)
     },
   },
   created() {
-    this.fetchData();
+    this._fetchData();
   },
   mounted() {
     this.eventBus.$on("scrollTop", this.scrollTop);
@@ -67,17 +66,20 @@ export default {
     this.eventBus.$off("scrollTop", this.scrollTop);
   },
   methods: {
-    ...mapMutations('setting',['setLoading']),
+    ...mapMutations("setting", ["setLoading"]),
     scrollTop(num) {
       this.$refs.mainContainer.scrollTop = num;
     },
-    async fetchData() {
-      this.setLoading(true)
-      const resp = await getBlogs(this.page, this.limit, this.categoryId);
-      this.total = resp.total;
-      this.data = resp.rows;
-      this.setLoading(false)
- 
+    async _fetchData() {
+      this.setLoading(true);
+      const {total,rows} = await this.$http.getBlogs(
+        this.page,
+        this.limit,
+        this.categoryId
+      );
+      this.total = total;
+      this.data = rows;
+      this.setLoading(false);
     },
     changePage(current) {
       const query = {
@@ -93,7 +95,7 @@ export default {
         params,
       });
     },
-  }
+  },
 };
 </script>
 

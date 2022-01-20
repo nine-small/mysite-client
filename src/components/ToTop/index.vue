@@ -26,7 +26,7 @@ export default {
         this.show = false;
         return 
       }
-      this.show = dom.scrollTop < 500 ? false : true;
+      this.show = dom.scrollTop < 200 ? false : true;
     },
     topHandle(){
       this.eventBus.$emit('scrollTop',0)

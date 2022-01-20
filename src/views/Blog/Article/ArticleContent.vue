@@ -34,10 +34,13 @@ export default {
 <style lang="less" scoped>
 .article-content-container {
   width: 100%;
+  box-sizing: border-box;
+  padding-left: 40px;
 }
 .mes {
   display: flex;
   height: 30px;
   line-height: 30px;
 }
+
 </style>

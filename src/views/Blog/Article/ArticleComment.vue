@@ -14,7 +14,6 @@
 <script>
 import Form from "@/components/MessageArea/Form";
 import MessageList from "@/components/MessageArea/MessageList";
-import { getComments,postComment } from "@/api/blog";
 import { mapState, mapMutations } from "vuex";
 import showMessage from '@/utils/showMessage'
 export default {
@@ -36,7 +35,7 @@ export default {
   methods: {
     ...mapMutations("setting", ["setLoading"]),
     async fetchData() {
-      const resp = await getComments(this.page, this.limit,this.blogId);
+      const resp = await this.$http.getComments(this.page, this.limit,this.blogId);
       this.commentData = resp.rows;
       this.total = resp.total;
     },
@@ -46,7 +45,7 @@ export default {
       }
       this.setLoading(true);
       this.page++;
-      const resp = await getComments(this.page, this.limit,this.blogId);
+      const resp = await this.$http.getComments(this.page, this.limit,this.blogId);
       this.setLoading(false);
       this.commentData = [...this.commentData, ...resp.rows];
       this.total = resp.total;
@@ -62,7 +61,7 @@ export default {
     },
     async postComment(data,container){
       data.blogId = this.blogId
-      const resp = await postComment(data)
+      const resp = await this.$http.postComment(data)
       console.log(resp)
       if(typeof resp === 'object'){
         await this.fetchData();

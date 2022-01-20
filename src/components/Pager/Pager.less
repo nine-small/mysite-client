@@ -1,0 +1,20 @@
+.pager-container {
+    display: flex;
+    justify-content: center;
+    a {
+      display: block;
+      padding: 0 5px;
+      cursor: pointer;
+      color: @primary;
+      &.disabled {
+        color: @gray;
+        &:hover {
+          cursor: no-drop;
+        }
+      }
+      &.active {
+        color: @words;
+        font-weight: 700;
+      }
+    }
+  }

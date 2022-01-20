@@ -3,7 +3,7 @@
     <Layout>
       <template #left>
         <div class="header">
-          <img :src="serviceUrl + data.avatar" />
+          <img :src="data.avatar" />
         </div>
       </template>
       <div class="main">
@@ -48,7 +48,7 @@ export default {
   width: 44px;
   height: 44px;
   margin: 5px 20px;
-
+  flex-shrink: 0;
   img {
     width: 100%;
     height: 100%;

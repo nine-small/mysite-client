@@ -20,7 +20,6 @@
 <script>
 import Layout from "@/components/Layout";
 import fetch from "@/mixins/fetchData";
-import { getBlog } from "@/api/blog";
 import ArticleToc from "./ArticleToc";
 import ArticleContent from "./ArticleContent";
 import ArticleComment from "./ArticleComment";
@@ -37,7 +36,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      const resp = await getBlog(this.$route.params.id);
+      const resp = await this.$http.getBlog(this.$route.params.id);
       setTitle.setRouterTitle(resp.title)
       return resp;
     },

@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { getBlogType } from "@/api/blog.js";
 export default {
   data() {
     return {
@@ -29,11 +28,11 @@ export default {
     };
   },
   created() {
-    this.fetchData();
+    this._fetchData();
   },
   methods: {
-    async fetchData() {
-      const resp = await getBlogType(this.page, this.limit, this.categoryId);
+    async _fetchData() {
+      const resp = await this.$http.getBlogType(this.page, this.limit, this.categoryId);
       this.data = resp;
       this.totalArticle();
       this.isLoading = false;
@@ -76,7 +75,8 @@ export default {
   // 监控路由，当路由发生变化时，重新请求数据
   watch: {
     async $route() {
-      await this.fetchData();
+      await this._fetchData();
+      this.eventBus.$emit('scrollTop',0)
     },
   },
 };

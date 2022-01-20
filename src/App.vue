@@ -23,7 +23,7 @@
 // 布局模块
 import Layout from "@/components/Layout";
 // 侧边菜单栏
-import SiteAside from "@/components/SiteAside";
+import SiteAside from "@/components/SiteAside/SiteAside.vue";
 // toTop
 import ToTop from "@/components/ToTop";
 // Icon

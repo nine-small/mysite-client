@@ -13,7 +13,7 @@
                 },
               }"
             >
-              <img :src="data.thumb" :title="data.title" />
+              <img v-lazy="data.thumb" :title="data.title" />
             </RouterLink>
           </div>
         </template>
@@ -86,6 +86,7 @@ export default {
   .blog-block {
     .left {
       width: 200px;
+      flex-shrink: 0;
       padding-right: 20px;
       a {
         display: flex;
@@ -94,6 +95,7 @@ export default {
         align-items: center;
         img {
           width: 200px;
+          height: 100%;
         }
       }
     }
